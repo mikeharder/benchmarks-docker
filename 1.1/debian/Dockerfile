@@ -18,4 +18,4 @@ RUN dotnet publish -o /pub -c Release
 WORKDIR /pub
 COPY benchmarks-docker/1.1/debian/run.sh .
 
-CMD ["run.sh"]
+CMD ["./run.sh"]
