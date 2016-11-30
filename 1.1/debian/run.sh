@@ -1,3 +1,3 @@
 #!/bin/sh
 
-dotnet app.dll scenarios=%SCENARIOS% server=kestrel threadcount=%THREADCOUNT% noninteractive=true
+dotnet app.dll scenarios=$SCENARIOS server=kestrel threadcount=$THREADCOUNT noninteractive=true
