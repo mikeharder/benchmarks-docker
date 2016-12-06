@@ -9,7 +9,6 @@ EXPOSE 8080
 WORKDIR /app
 COPY . .
 
-COPY project.json project.json.net451
 RUN sed -i.net451 '/net451/d' ./project.json
 
 RUN dotnet restore
