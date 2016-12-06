@@ -4,6 +4,7 @@
 git clone https://github.com/aspnet/Benchmarks
 cd Benchmarks/src/Benchmarks
 cp ../../NuGet.config .
+curl -O https://raw.githubusercontent.com/TechEmpower/FrameworkBenchmarks/master/frameworks/CSharp/aspnetcore/Benchmarks/appsettings.postgresql.json
 ```
 
 
@@ -11,6 +12,7 @@ cp ../../NuGet.config .
 ```
 cd Benchmarks/src/Benchmarks
 sed -i.net451 '/net451/d' ./project.json
+sed 's|{db_server_placeholder}|db-name-or-ip|g' appsettings.postgresql.json > appsettings.json
 dotnet restore
 dotnet publish -c Release
 ```
@@ -67,3 +69,30 @@ docker run -it --rm --network host -e SCENARIOS=json benchmarks
 ```
 wrk -c 256 -t 32 -d 10 http://server-ip-or-name:8080/json
 ```
+
+# Fortunes
+
+## Server
+
+### Host
+```
+dotnet bin/Release/netcoreapp1.1/Benchmarks.dll scenarios=fortunes server.urls=http://+:8080 noninteractive=true
+```
+
+### Container
+
+#### Bridge Networking
+```
+docker run -it --rm -p 8080:8080 -e SCENARIOS=fortunes benchmarks
+```
+
+#### Host Networking
+```
+docker run -it --rm --network host -e SCENARIOS=fortunes benchmarks
+```
+
+## Client
+```
+wrk -c 256 -t 32 -d 10 http://server-ip-or-name:8080/json
+```
+
