@@ -9,7 +9,7 @@ cp ../../NuGet.config .
 
 ## Host
 ```
-cd Benchmarks\src\Benchmarks
+cd Benchmarks/src/Benchmarks
 sed -i.net451 '/net451/d' ./project.json
 dotnet restore
 dotnet publish -c Release
@@ -17,7 +17,7 @@ dotnet publish -c Release
 
 ## Container
 ```
-cd Benchmarks\src\Benchmarks
+cd Benchmarks/src/Benchmarks
 git submodule add https://github.com/mikeharder/benchmarks-docker
 docker build -t benchmarks -f benchmarks-docker/1.1/debian/Dockerfile .
 ```
