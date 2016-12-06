@@ -52,8 +52,15 @@ dotnet bin/Release/netcoreapp1.1/Benchmarks.dll scenarios=json server.urls=http:
 ```
 
 ### Container
+
+#### Bridge Networking
 ```
 docker run -it --rm -p 8080:8080 -e SCENARIOS=json benchmarks
+```
+
+#### Host Networking
+```
+docker run -it --rm --network host -e SCENARIOS=json benchmarks
 ```
 
 ## Client
